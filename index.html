@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourab Talukder | Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .profile-glow { box-shadow: 0 0 50px -12px rgba(129, 140, 248, 0.5); }
+        input, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
+        input:focus, textarea:focus { border-color: #818cf8 !important; outline: none; ring: 1px #818cf8; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <span class="text-xl font-bold gradient-text">GT.</span>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+                <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                <a href="#experience" class="hover:text-indigo-400 transition">Experience</a>
+                <a href="#education" class="hover:text-indigo-400 transition">Education</a>
+                <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="pt-40 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Gourab <br><span class="gradient-text">Talukder</span></h1>
+                <p class="text-xl text-slate-400 max-w-lg mb-8">
+                    Physics Graduate & Tally Professional dedicated to organizational growth through analytical problem-solving.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full transition shadow-lg shadow-indigo-500/20">Hire Me</a>
+                    <a href="tel:+917074239449" class="border border-slate-700 hover:bg-slate-800 px-8 py-3 rounded-full transition">Call Now</a>
+                </div>
+            </div>
+            
+            <!-- Profile Image -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-25"></div>
+                    <!-- REPLACE URL BELOW WITH YOUR IMAGE -->
+                    <img src="https://via.placeholder.com/400" alt="Gourab Talukder" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-[#0f172a] profile-glow">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-[#1e293b]/30">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Professional Journey</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="glass p-8 rounded-2xl group hover:border-indigo-500/50 transition">
+                    <span class="text-indigo-400 text-sm font-semibold italic">2024 - 2025</span>
+                    <h3 class="text-xl font-bold text-white mt-2">Tally Operator</h3>
+                    <p class="text-slate-500 mb-4">Proprietor Firms, Gangarampur</p>
+                    <p class="text-sm leading-relaxed">Handling financial accounting, inventory vouchers, and daily business transactions using Tally software.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl group hover:border-indigo-500/50 transition">
+                    <span class="text-indigo-400 text-sm font-semibold italic">2023 - 2025</span>
+                    <h3 class="text-xl font-bold text-white mt-2">Sales Executive (Spare & Parts)</h3>
+                    <p class="text-slate-500 mb-4">TVS Showroom, Gangarampur</p>
+                    <p class="text-sm leading-relaxed">Managing client interactions, achieving sales targets, and maintaining high customer satisfaction levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/ADCA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto glass p-8 md:p-12 rounded-3xl">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Technical Qualifications</h2>
+                        <div class="bg-indigo-600/10 border border-indigo-500/20 p-6 rounded-xl">
+                            <h4 class="font-bold text-indigo-400">ADCA (1 Year Diploma)</h4>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">Skill India Certified</p>
+                            <ul class="grid grid-cols-2 gap-2 text-sm">
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Excel</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Word</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Access</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>Tally ERP</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>Hardware</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>PowerPoint</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Personal Strengths</h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Excellent Communication Skills</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Strong Analytical Ability</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Client Relationship Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Form Section -->
+    <section id="contact" class="py-20 bg-[#1e293b]/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+                    <p class="text-slate-400">Have a question or want to work together?</p>
+                </div>
+
+                <div class="grid md:grid-cols-5 gap-12">
+                    <!-- Contact Details -->
+                    <div class="md:col-span-2 space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Call Me</h4>
+                                <p class="text-sm text-slate-400">+91 7074239449</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Email</h4>
+                                <p class="text-sm text-slate-400">gourabtalukder319@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Address</h4>
+                                <p class="text-sm text-slate-400">VILL – KADIHAT, P.O - BELBARI, Dist – Dakshin Dinajpur, WB, 733124</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="md:col-span-3">
+                        <form action="#" method="POST" class="glass p-8 rounded-2xl space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Full Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Email Address</label>
+                                    <input type="email" class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Subject</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Job Opportunity">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Hi Gourab..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition duration-300">
+                                Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800 text-center px-6">
+        <div class="mb-6 flex justify-center space-x-6 text-xl">
+            <a href="#" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="text-xs text-slate-500 uppercase tracking-widest">&copy; 2024 Gourab Talukder | Digital Resume</p>
+    </footer>
+
+</body>
+</html>
