@@ -1,366 +1,296 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourab Talukder | Portfolio</title>
-    <meta name="description" content="Professional Portfolio of Gourab Talukder - Physics Graduate & Tally Operator">
-    
-    <!-- Tailwind CSS -->
+    <title>Gourab Talukder | Professional Portfolio</title>
+    <meta name="description" content="Digital resume of Gourab Talukder — Physics Graduate, Tally Operator, Sales Executive. Professional experience, education, skills, and contact details.">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        dark: '#0f172a',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
-
-        /* Glass Morphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Timeline */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #6366f1, #8b5cf6, transparent);
-        }
-
-        @media (max-width: 768px) {
-            .timeline-line { left: 30px; }
-        }
-
-        /* Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skill Bar Animation */
-        .skill-progress {
-            width: 0;
-            transition: width 1.5s ease-out;
-        }
-
-        /* Print Styles */
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white; color: black; }
-            .glass, .glass-card { 
-                background: white !important; 
-                border: 1px solid #ccc !important;
-                box-shadow: none !important;
-            }
-            .text-gradient { color: #000 !important; -webkit-text-fill-color: black !important; }
-            a { text-decoration: none; color: black !important; }
-            section { page-break-inside: avoid; }
-        }
-
-        /* Loader */
-        .loader {
-            border-top-color: #6366f1;
-            -webkit-animation: spinner 1.5s linear infinite;
-            animation: spinner 1.5s linear infinite;
-        }
-        @keyframes spinner {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: radial-gradient(1200px circle at 80% -10%, rgba(129,140,248,0.15), transparent 60%); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+        .gradient-text { background: linear-gradient(90deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .profile-glow { box-shadow: 0 0 60px -12px rgba(129, 140, 248, 0.45); }
+        input, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; color: #f8fafc !important; }
+        input:focus, textarea:focus { border-color: #818cf8 !important; box-shadow: 0 0 0 2px rgba(129,140,248,0.35) !important; outline: none; }
+        .section-title { letter-spacing: 0.08em; text-transform: uppercase; }
+        .fade-in { opacity: 0; transform: translateY(16px); animation: fadeInUp 0.8s ease forwards; }
+        .delay-100 { animation-delay: 0.1s; } .delay-200 { animation-delay: 0.2s; } .delay-300 { animation-delay: 0.3s; } .delay-400 { animation-delay: 0.4s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .hover-card { transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .hover-card:hover { transform: translateY(-6px); border-color: rgba(129,140,248,0.5); box-shadow: 0 20px 40px rgba(129,140,248,0.12); }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #818cf8; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
-<body class="bg-dark text-slate-300 antialiased overflow-x-hidden">
-
-    <!-- Page Loader -->
-    <div id="loader" class="fixed inset-0 bg-dark z-[100] flex items-center justify-center transition-opacity duration-500">
-        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-    </div>
+<body class="bg-[#0f172a] text-slate-300">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-gradient font-serif">GT.</a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-                    <a href="#home" class="hover:text-primary transition-colors relative group">
-                        Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#about" class="hover:text-primary transition-colors relative group">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#experience" class="hover:text-primary transition-colors relative group">
-                        Experience
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#skills" class="hover:text-primary transition-colors relative group">
-                        Skills
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="px-6 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary hover:bg-primary hover:text-white transition-all">
-                        Contact
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden mt-4 pb-4 border-t border-white/10 pt-4" id="mobile-menu">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home" class="hover:text-primary transition">Home</a>
-                    <a href="#about" class="hover:text-primary transition">About</a>
-                    <a href="#experience" class="hover:text-primary transition">Experience</a>
-                    <a href="#skills" class="hover:text-primary transition">Skills</a>
-                    <a href="#contact" class="text-primary font-semibold">Contact Me</a>
-                </div>
+    <nav class="fixed w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold gradient-text tracking-widest">GT.</a>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+                <a href="#home" class="nav-link hover:text-indigo-400 transition">Home</a>
+                <a href="#experience" class="nav-link hover:text-indigo-400 transition">Experience</a>
+                <a href="#education" class="nav-link hover:text-indigo-400 transition">Education</a>
+                <a href="#skills" class="nav-link hover:text-indigo-400 transition">Skills</a>
+                <a href="#contact" class="nav-link hover:text-indigo-400 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Background Elements -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                <!-- Text Content -->
-                <div class="md:w-1/2 text-center md:text-left reveal">
-                    <p class="text-primary font-medium mb-4 tracking-widest uppercase text-sm">Welcome to my portfolio</p>
-                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                        Hi, I'm <br>
-                        <span class="text-gradient font-serif">Gourab Talukder</span>
-                    </h1>
-                    <div class="h-8 mb-8">
-                        <span id="typewriter" class="text-xl text-slate-400 border-r-2 border-primary pr-1"></span>
-                    </div>
-                    <p class="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                        Physics Graduate & Tally Professional with expertise in sales operations and client management. Dedicated to driving organizational growth through analytical problem-solving.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
-                            Hire Me
-                        </a>
-                        <button onclick="window.print()" class="px-8 py-4 border border-white/20 text-white rounded-full font-semibold hover:bg-white/5 transition-all flex items-center justify-center gap-2 group">
-                            <i class="fas fa-download group-hover:translate-y-1 transition-transform"></i>
-                            Download CV
-                        </button>
-                    </div>
-                    
-                    <!-- Social Links -->
-                    <div class="mt-12 flex gap-6 justify-center md:justify-start">
-                        <a href="tel:+917074239449" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="mailto:gourabtalukder319@gmail.com" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
+    <!-- Hero -->
+    <header id="home" class="pt-40 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <p class="text-indigo-400 text-sm uppercase tracking-widest mb-3 fade-in delay-100">Digital Resume</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 fade-in delay-200">
+                    Gourab <br><span class="gradient-text">Talukder</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-lg mb-8 fade-in delay-300">
+                    Physics Graduate • Tally Operator • Sales Executive — focused on delivering measurable value through accuracy, communication, and client relationships.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4 fade-in delay-400">
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full transition shadow-lg shadow-indigo-500/20">
+                        <i class="fas fa-paper-plane mr-2 text-xs"></i> Hire Me
+                    </a>
+                    <a href="tel:+917074239449" class="border border-slate-700 hover:bg-slate-800 px-8 py-3 rounded-full transition">
+                        <i class="fas fa-phone mr-2 text-xs"></i> Call Now
+                    </a>
                 </div>
+            </div>
 
-                <!-- Profile Image -->
-                <div class="md:w-1/2 flex justify-center reveal">
-                    <div class="relative w-72 h-72 md:w-96 md:h-96">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-30 animate-pulse-slow"></div>
-                        <div class="absolute inset-0 border-2 border-white/10 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                        <div class="absolute -inset-4 border border-primary/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-                        
-                        <!-- Replace src with your actual image path -->
-                        <img src="profile.jpg" alt="Gourab Talukder" 
-                             class="relative w-full h-full object-cover rounded-full border-4 border-dark shadow-2xl animate-float"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Gourab+Talukder&background=6366f1&color=fff&size=400'">
-                        
-                        <!-- Floating Badge -->
-                        <div class="absolute -bottom-4 -right-4 glass px-6 py-3 rounded-2xl flex items-center gap-3 animate-bounce">
-                            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                            <span class="text-white font-semibold text-sm">Available for work</span>
-                        </div>
-                    </div>
+            <!-- Profile Image -->
+            <div class="md:w-1/2 flex justify-center fade-in delay-300">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-25"></div>
+                    <!-- REPLACE THIS URL WITH YOUR IMAGE -->
+                    <img src="https://i.ibb.co/gLkh1FHS/IMG-20251109-WA0028.jpg" alt="Gourab Talukder" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-[#0f172a] profile-glow">
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce no-print">
-            <a href="#about" class="text-white/50 hover:text-white transition-colors">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
+    <!-- Objective -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto glass p-8 md:p-10 rounded-3xl border-l-4 border-indigo-500">
+                <h2 class="section-title text-xs text-indigo-400 mb-3"><i class="fas fa-bullseye mr-2"></i> Career Objective</h2>
+                <p class="text-slate-400 leading-relaxed text-lg">
+                    To work in a challenging environment and seek an opportunity to expose my skills to help in the growth of the organization and myself. Committed to bringing strong analytical and problem-solving abilities to a professional team, while maintaining excellent client relationships and operational accuracy.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900/50">
+    <!-- Experience -->
+    <section id="experience" class="py-20 bg-[#1e293b]/30">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Career Objective</h2>
-                <div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
-                    <i class="fas fa-quote-left text-4xl text-primary/20 absolute top-6 left-6"></i>
-                    <p class="text-lg text-slate-300 leading-relaxed italic relative z-10">
-                        To work in a challenging environment and seeking for a chance to expose my skills to help in the growth of the organization and myself. Bringing forth strong analytical and problem-solving abilities, coupled with excellent communication skills to foster long-term client relationships.
-                    </p>
+            <h2 class="section-title text-center text-xs text-indigo-400 mb-3">Professional Journey</h2>
+            <h3 class="text-3xl font-bold text-white mb-12 text-center">Work Experience</h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="glass p-8 rounded-2xl hover-card">
+                    <span class="text-indigo-400 text-sm font-semibold italic">2024 - 2025</span>
+                    <h4 class="text-xl font-bold text-white mt-2">Tally Operator</h4>
+                    <p class="text-slate-500 mb-4">Proprietor Firms, Gangarampur</p>
+                    <p class="text-sm leading-relaxed">Handled financial accounting, inventory vouchers, and day-to-day transactions using Tally ERP; ensured accurate recordkeeping and timely reporting.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl hover-card">
+                    <span class="text-indigo-400 text-sm font-semibold italic">2023 - 2025</span>
+                    <h4 class="text-xl font-bold text-white mt-2">Sales Executive (Spare & Parts)</h4>
+                    <p class="text-slate-500 mb-4">TVS Showroom, Gangarampur</p>
+                    <p class="text-sm leading-relaxed">Managed client interactions, resolved queries, maintained spare-part inventory, and achieved sales targets while ensuring customer satisfaction.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience & Education Timeline -->
-    <section id="experience" class="py-20 relative">
+    <!-- Education -->
+    <section id="education" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center reveal">Experience & Education</h2>
-            
-            <div class="relative max-w-4xl mx-auto">
-                <!-- Timeline Line -->
-                <div class="timeline-line"></div>
-
-                <!-- Item 1 -->
-                <div class="relative mb-12 reveal">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 mb-4 md:mb-0 md:text-right">
-                            <div class="glass-card p-6 rounded-2xl inline-block text-left md:text-right hover:scale-105 transition-transform">
-                                <span class="text-primary font-bold text-sm">2024 - Present</span>
-                                <h3 class="text-xl font-bold text-white mt-1">Tally Operator</h3>
-                                <p class="text-slate-400 text-sm mt-1">Proprietor Firms, Gangarampur</p>
-                                <p class="text-slate-500 text-sm mt-2">Financial accounting, inventory management, and data entry operations using Tally ERP.</p>
-                            </div>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-dark z-10 hidden md:block"></div>
-                        <div class="md:w-5/12"></div>
+            <h2 class="section-title text-center text-xs text-indigo-400 mb-3">Academics</h2>
+            <h3 class="text-3xl font-bold text-white mb-12 text-center">Education</h3>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="flex flex-col md:flex-row glass p-6 rounded-xl items-center hover-card">
+                    <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400 mb-4 md:mb-0">
+                        <i class="fas fa-user-graduate text-2xl"></i>
                     </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="relative mb-12 reveal">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-dark z-10 hidden md:block"></div>
-                        <div class="md:w-5/12 mb-4 md:mb-0">
-                            <div class="glass-card p-6 rounded-2xl hover:scale-105 transition-transform">
-                                <span class="text-secondary font-bold text-sm">2023 - 2025</span>
-                                <h3 class="text-xl font-bold text-white mt-1">Sales Executive</h3>
-                                <p class="text-slate-400 text-sm mt-1">TVS Showroom, Gangarampur</p>
-                                <p class="text-slate-500 text-sm mt-2">Spare parts sales, client relationship management, and target achievement.</p>
-                            </div>
-                        </div>
+                    <div class="md:ml-6 text-center md:text-left">
+                        <h4 class="text-lg font-bold text-white">B.Sc in Physics</h4>
+                        <p class="text-sm text-slate-400">University of Gour Banga | Graduated Sep 2024</p>
                     </div>
+                    <div class="md:ml-auto font-bold text-indigo-400 text-xl">55.05%</div>
                 </div>
-
-                <!-- Item 3: Education -->
-                <div class="relative mb-12 reveal">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 mb-4 md:mb-0 md:text-right">
-                            <div class="glass-card p-6 rounded-2xl inline-block text-left md:text-right hover:scale-105 transition-transform border-l-4 border-l-green-500 md:border-l-0 md:border-r-4 md:border-r-green-500">
-                                <span class="text-green-400 font-bold text-sm">2024</span>
-                                <h3 class="text-xl font-bold text-white mt-1">B.Sc in Physics</h3>
-                                <p class="text-slate-400 text-sm mt-1">University of Gour Banga</p>
-                                <span class="inline-block mt-2 px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-bold">55.05%</span>
-                            </div>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-dark z-10 hidden md:block"></div>
-                        <div class="md:w-5/12"></div>
+                <div class="flex flex-col md:flex-row glass p-6 rounded-xl items-center hover-card">
+                    <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400 mb-4 md:mb-0">
+                        <i class="fas fa-school text-2xl"></i>
                     </div>
+                    <div class="md:ml-6 text-center md:text-left">
+                        <h4 class="text-lg font-bold text-white">Higher Secondary (12th Science)</h4>
+                        <p class="text-sm text-slate-400">WBCHSE | 2021</p>
+                    </div>
+                    <div class="md:ml-auto font-bold text-indigo-400 text-xl">66.2%</div>
                 </div>
+                <div class="flex flex-col md:flex-row glass p-6 rounded-xl items-center hover-card">
+                    <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400 mb-4 md:mb-0">
+                        <i class="fas fa-book text-2xl"></i>
+                    </div>
+                    <div class="md:ml-6 text-center md:text-left">
+                        <h4 class="text-lg font-bold text-white">Secondary (10th)</h4>
+                        <p class="text-sm text-slate-400">WBBSE | 2019</p>
+                    </div>
+                    <div class="md:ml-auto font-bold text-indigo-400 text-xl">60.3%</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Item 4: 12th -->
-                <div class="relative mb-12 reveal">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-dark z-10 hidden md:block"></div>
-                        <div class="md:w-5/12 mb-4 md:mb-0">
-                            <div class="glass-card p-6 rounded-2xl hover:scale-105 transition-transform border-l-4 border-l-blue-500">
-                                <span class="text-blue-400 font-bold text-sm">2021</span>
-                                <h3 class="text-xl font-bold text-white mt-1">Higher Secondary (Science)</h3>
-                                <p class="text-slate-400 text-sm mt-1">WBCHSE</p>
-                                <span class="inline-block mt-2 px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-bold">66.2%</span>
-                            </div>
+    <!-- Skills & Qualification -->
+    <section id="skills" class="py-20 bg-[#1e293b]/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto glass p-8 md:p-12 rounded-3xl">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Professional Qualification</h2>
+                        <div class="bg-indigo-600/10 border border-indigo-500/20 p-6 rounded-xl">
+                            <h4 class="font-bold text-indigo-400">ADCA (1 Year Diploma)</h4>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">National Board of Computer Education — Skill India</p>
+                            <ul class="grid grid-cols-2 gap-2 text-sm">
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Excel</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Word</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS PowerPoint</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MS Access</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>Tally ERP</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>Hardware & OS</li>
+                            </ul>
                         </div>
                     </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Key Abilities</h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Excellent Communication & Interpersonal Skills</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Strong Analytical & Problem-Solving Ability</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Client Relationship Management & Retention</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Accurate Data Entry & Documentation</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                <span class="text-sm">Calm Under Pressure; Target-Oriented</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-xs text-indigo-400 mb-3">Let’s Connect</h2>
+                    <h3 class="text-4xl font-bold text-white mb-4">Get In Touch</h3>
+                    <p class="text-slate-400">Have a role or opportunity in mind? Send a message and I’ll respond promptly.</p>
                 </div>
 
-                <!-- Item 5: 10th -->
-                <div class="relative reveal">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 mb-4 md:mb-0 md:text-right">
-                            <div class="glass-card p-6 rounded-2xl inline-block text-left md:text-right hover:scale-105 transition-transform border-l-4 border-l-orange-500 md:border-l-0 md:border-r-4 md:border-r-orange-500">
-                                <span class="text-orange-400 
+                <div class="grid md:grid-cols-5 gap-12">
+                    <!-- Contact Details -->
+                    <div class="md:col-span-2 space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Call Me</h4>
+                                <a href="tel:+917074239449" class="text-sm text-slate-400 hover:text-indigo-400">+91 7074239449</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Email</h4>
+                                <a href="mailto:gourabtalukder319@gmail.com" class="text-sm text-slate-400 hover:text-indigo-400">gourabtalukder319@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600/20 p-4 rounded-lg text-indigo-400">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Address</h4>
+                                <p class="text-sm text-slate-400">VILL – KADIHAT, P.O - BELBARI, Dist – Dakshin Dinajpur, WB, 733124, India</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="md:col-span-3">
+                        <form action="#" method="POST" class="glass p-8 rounded-2xl space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Full Name</label>
+                                    <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg" placeholder="Your Name">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Email Address</label>
+                                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg" placeholder="you@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Subject</label>
+                                <input type="text" name="subject" required class="w-full px-4 py-3 rounded-lg" placeholder="Job Opportunity / Inquiry">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-slate-500 mb-2">Message</label>
+                                <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg" placeholder="Hi Gourab, I’d like to discuss..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition duration-300">
+                                Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800 text-center px-6">
+        <div class="mb-6 flex justify-center space-x-6 text-xl">
+            <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/917074239449" aria-label="WhatsApp" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="GitHub" class="text-slate-500 hover:text-indigo-400 transition"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">&copy; 2024 Gourab Talukder | Digital Resume</p>
+        <p class="text-xs text-slate-600">I hereby declare that the above given information is true according to my knowledge and ability.</p>
+    </footer>
+
+    <!-- Small JS for smooth scroll + subtle reveal on scroll (optional but nice) -->
+    <script>
+        // Simple intersection observer for fade-in sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('fade-in');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section > .container, header > .container').forEach(el => observer.observe(el));
+    </script>
+</body>
+                    </html>
