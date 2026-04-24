@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gourab Talukder | Digital Resume</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --neon-cyan: #00f5ff;
+      --neon-purple: #bf00ff;
+      --neon-green: #39ff14;
+      --dark-bg: #050510;
+      --card-bg: #0a0a1f;
+      --card-border: #1a1a3e;
+      --text-primary: #e0e0ff;
+      --text-secondary: #8888bb;
+      --accent-gold: #ffd700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--dark-bg);
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* ── Animated Background ── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 10s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(0,245,255,0.07); top: -100px; left: -100px; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(191,0,255,0.07); bottom: -100px; right: -100px; animation-delay: 3s; }
+    .orb-3 { width: 300px; height: 300px; background: rgba(57,255,20,0.04); top: 50%; left: 50%; animation-delay: 6s; }
+
+    @keyframes orbFloat {
+      0% { transform: translateY(0px) scale(1); }
+      100% { transform: translateY(40px) scale(1.08); }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(5,5,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,245,255,0.15);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: 1.2rem;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--neon-cyan);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--neon-cyan); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── Main Layout ── */
+    main { position: relative; z-index: 1; }
+    section { position: relative; z-index: 1; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 40px 60px;
+      text-align: center;
+    }
+
+    .hero-inner { max-width: 860px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border: 1px solid rgba(0,245,255,0.35);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      background: rgba(0,245,255,0.05);
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      box-shadow: 0 0 8px var(--neon-green);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 50%, var(--neon-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.9s ease 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      animation: fadeInUp 0.9s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-title span {
+      color: var(--neon-cyan);
+      font-weight: 600;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #9999cc;
+      max-width: 620px;
+      margin: 0 auto 36px;
+      animation: fadeInUp 0.9s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 42px;
+      animation: fadeInUp 0.9s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .contact-chip i { color: var(--neon-cyan); font-size: 0.85rem; }
+    .contact-chip:hover {
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 18px rgba(0,245,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      animation: fadeInUp 0.9s ease 0.5s forwards;
+      opacity: 0;
+    }
+
+    .btn-primary {
+      padding: 13px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 30px rgba(0,245,255,0.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(0,245,255,0.45);
+    }
+
+    .btn-outline {
+      padding: 13px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      background: rgba(0,245,255,0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0,245,255,0.2);
+    }
+
+    /* ── Section Styles ── */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .section-tag {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      background: rgba(0,245,255,0.08);
+      border: 1px solid rgba(0,245,255,0.2);
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,245,255,0.3), transparent);
+    }
+
+    /* ── Neo Card ── */
+    .neo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .neo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,245,255,0.03), transparent);
+      pointer-events: none;
+    }
+    .neo-card:hover {
+      border-color: rgba(0,245,255,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,245,255,0.08);
+    }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--card-border);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    .stat-item {
+      background: var(--card-bg);
+      padding: 28px 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-item:hover { background: rgba(0,245,255,0.05); }
+    .stat-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; }
+
+    /* ── Education Timeline ── */
+    .edu-timeline { display: flex; flex-direction: column; gap: 24px; }
+
+    .edu-card {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .edu-year-box {
+      background: rgba(0,245,255,0.06);
+      border: 1px solid rgba(0,245,255,0.2);
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+    .edu-year {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+    }
+    .edu-level {
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .edu-body { flex: 1; }
+    .edu-degree {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .edu-board {
+      font-size: 0.82rem;
+      color: var(--neon-purple);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .edu-field {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .edu-percentage {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.25);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--neon-green);
+    }
+
+    /* ── Progress Bar ── */
+    .progress-wrap { margin-top: 12px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 6px; }
+    .progress-track {
+      width: 100%;
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+      width: 0%;
+      transition: width 1.5s ease;
+      box-shadow: 0 0 10px rgba(0,245,255,0.5);
+    }
+
+    /* ── Experience ── */
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+    .exp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .exp-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    }
+    .exp-card:hover {
+      border-color: rgba(0,245,255,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 25px rgba(0,245,255,0.08);
+    }
+
+    .exp-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+    .exp-icon-1 { background: rgba(0,245,255,0.1); color: var(--neon-cyan); }
+    .exp-icon-2 { background: rgba(191,0,255,0.1); color: var(--neon-purple); }
+
+    .exp-role {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--neon-cyan);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .exp-period {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .exp-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.25);
+      border-radius: 999px;
+      font-size: 0.68rem;
+      color: var(--neon-green);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+    .skill-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .skill-item:last-child { border-bottom: none; }
+
+    .skill-tag-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-tag {
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 1px solid;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .skill-tag:hover { transform: translateY(-2px); }
+    .tag-cyan  { color: var(--neon-cyan); border-color: rgba(0,245,255,0.25); background: rgba(0,245,255,0.06); }
+    .tag-purple { color: #c084fc; border-color: rgba(192,132,252,0.25); background: rgba(192,132,252,0.06); }
+    .tag-green { color: var(--neon-green); border-color: rgba(57,255,20,0.25); background: rgba(57,255,20,0.06); }
+    .tag-gold { color: var(--accent-gold); border-color: rgba(255,215,0,0.25); background: rgba(255,215,0,0.06); }
+    .tag-pink { color: #ff6eb4; border-color: rgba(255,110,180,0.25); background: rgba(255,110,180,0.06); }
+
+    /* ── Qualification / ADCA ── */
+    .qual-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .qual-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(191,0,255,0.06);
+      pointer-events: none;
+    }
+
+    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 24px; }
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: #9999cc;
+      line-height: 1.5;
+      transition: all 0.3s;
+    }
+    .module-item:hover { border-color: rgba(0,245,255,0.25); color: var(--text-primary); }
+    .module-item i { color: var(--neon-cyan); margin-top: 2px; flex-shrink: 0; }
+
+    /* ── Personal Details ── */
+    .personal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .personal-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    .personal-item:hover {
+      border-color: rgba(0,245,255,0.2);
+      background: rgba(0,245,255,0.03);
+    }
+    .personal-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(0,245,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--neon-cyan);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .personal-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+    .personal-value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+
+    /* ── Languages ── */
+    .lang-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: var(--card-bg);
+      transition: all 0.3s;
+    }
+    .lang-item:hover {
+      border-color: rgba(0,245,255,0.3);
+      box-shadow: 0 0 20px rgba(0,245,255,0.08);
+    }
+    .lang-flag { font-size: 1.5rem; }
+    .lang-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+    .lang-level { font-size: 0.7rem; color: var(--neon-cyan); }
+
+    /* ── Declaration ── */
+    .declaration-box {
+      background: linear-gradient(135deg, rgba(0,245,255,0.04), rgba(191,0,255,0.04));
+      border: 1px solid rgba(0,245,255,0.15);
+      border-radius: 16px;
+      padding: 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .declaration-box::before {
+      content: '"';
+      position: absolute;
+      top: -10px; left: 20px;
+      font-size: 8rem;
+      font-family: Georgia, serif;
+      color: rgba(0,245,255,0.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 32px 40px;
+      text-align: center;
+      background: rgba(5,5,16,0.9);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Hamburger ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--neon-cyan); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── Objective Pills ── */
+    .objective-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .objective-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(0,245,255,0.05);
+      border: 1px solid rgba(0,245,255,0.2);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .objective-pill i { color: var(--neon-cyan); }
+
+    /* ── Abilities List ── */
+    .abilities-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .abilities-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: #9999cc;
+      line-height: 1.7;
+    }
+    .abilities-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 8px var(--neon-cyan);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 14px 20px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(5,5,16,0.97); border-bottom: 1px solid var(--card-border); padding: 20px; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 20px 60px; }
+      .section-wrap { padding: 60px 16px; }
+      .edu-card { grid-template-columns: 1fr; }
+      .edu-year-box { display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Backgrounds -->
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-logo">GT.</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#qualification">Qualification</a></li>
+    <li><a href="#personal">Personal</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="about">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available for Opportunities
+      </div>
+
+      <h1 class="hero-name">Gourab<br/>Talukder</h1>
+
+      <p class="hero-title">
+        <span>Tally Operator</span> &nbsp;·&nbsp; Sales Executive &nbsp;·&nbsp; Computer Professional
+      </p>
+
+      <p class="hero-desc">
+        A motivated and detail-oriented professional with a strong foundation in commerce,
+        data management, and client relations — seeking a challenging role to grow and
+        contribute to organizational excellence.
+      </p>
+
+      <div class="hero-contact-row">
+        <a href="tel:7074239449" class="contact-chip">
+          <i class="fa fa-phone"></i> +91 7074239449
+        </a>
+        <a href="mailto:gourabtalukder319@gmail.com" class="contact-chip">
+          <i class="fa fa-envelope"></i> gourabtalukder319@gmail.com
+        </a>
+        <span class="contact-chip">
+          <i class="fa fa-map-marker-alt"></i> Dakshin Dinajpur, West Bengal
+        </span>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="mailto:gourabtalukder319@gmail.com" class="btn-primary">
+          <i class="fa fa-paper-plane"></i> Hire Me
+        </a>
+        <a href="#education" class="btn-outline">
+          <i class="fa fa-arrow-down"></i> Explore Resume
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar reveal">
+        <div class="stat-item">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">B.Sc</div>
+          <div class="stat-label">Physics Graduate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">ADCA</div>
+          <div class="stat-label">Computer Diploma</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Dedication</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ OBJECTIVE ══════════ -->
+  <section>
+    <div class="section-wrap" style="padding-top: 0;">
+      <div class="section-header reveal">
+        <span class="section-tag">01</span>
+        <h2 class="section-title">Objective</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="neo-card reveal">
+        <p style="font-size: 1rem; line-height: 1.9; color: #9999cc; max-width: 800px;">
+          To work in a <span style="color: var(--neon-cyan); font-weight: 600;">challenging environment</span> and seek opportunities to expose my skills
+          to help in the growth of the organization and myself. I believe in continuous
+          learning and bringing a positive, solution-oriented attitude to every task I undertake.
+        </p>
+        <div class="objective-pills">
+          <div class="objective-pill"><i class="fa fa-comments"></i> Good Communication Skill</div>
+          <div class="objective-pill"><i class="fa fa-brain"></i> Analytical Thinking</div>
+          <div class="objective-pill"><i class="fa fa-puzzle-piece"></i> Problem-Solving Ability</div>
+          <div class="objective-pill"><i class="fa fa-handshake"></i> Team Collaboration</div>
+          <div class="objective-pill"><i class="fa fa-bullseye"></i> Goal-Oriented</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ EDUCATION ══════════ -->
+  <section id="education">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-tag">02</span>
+        <h2 class="section-title">Education</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="edu-timeline">
+
+        <!-- 10th -->
+        <div class="neo-card edu-card reveal" style="display: grid; grid-template-columns: 90px 1fr; gap: 24px; align-items: start;">
+          <div class="edu-year-box">
+            <div class="edu-year">2019</div>
+            <div class="edu-level">10th</div>
+          </div>
+          <div class="edu-body">
+            <div class="edu-degree">Secondary Education (10th)</div>
+            <div class="edu-board"><i class="fa fa-university" style="margin-right:6px;"></i>West Bengal Board of Secondary Education</div>
+            <div class="edu-field">Field of Study: Combined</div>
+            <div class="edu-percentage"><i class="fa fa-chart-line"></i> 60.3% Obtained</div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Score</span><span>60.3%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="60.3"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12th -->
+        <div class="neo-card edu-card reveal" style="display: grid; grid-template-columns: 90px 1fr; gap: 24px; align-items: start;">
+          <div class="edu-year-box">
+            <div class="edu-year">2021</div>
+            <div class="edu-level">12th</div>
+          </div>
+          <div class="edu-body">
+            <div class="edu-degree">Higher Secondary (12th)</div>
+            <div class="edu-board"><i class="fa fa-university" style="margin-right:6px;"></i>West Bengal Council of Higher Secondary Education</div>
+            <div class="edu-field">Field of Study: Science</div>
+            <div class="edu-percentage"><i class="fa fa-chart-line"></i> 66.2% Obtained</div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Score</span><span>66.2%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="66.2"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graduation -->
+        <div class="neo-card edu-card reveal" style="display: grid; grid-template-columns: 90px 1fr; gap: 24px; align-items: start;">
+          <div class="edu-year-box" style="background: rgba(191,0,255,0.08); border-color: rgba(191,0,255,0.3);">
+            <div class="edu-year" style="color: #c084fc;">2024</div>
+            <div class="edu-level">B.Sc</div>
+          </div>
+          <div class="edu-body">
+            <div class="edu-degree">B.Sc in Physics — Graduation</div>
+            <div class="edu-board" style="color: #c084fc;"><i class="fa fa-university" style="margin-right:6px;"></i>University of Gour Banga</div>
+            <div class="edu-field">Field of Study: Physics (Science)</div>
+            <div class="edu-percentage" style="color: #c084fc; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.08);">
+              <i class="fa fa-graduation-cap"></i> 55.05% Obtained
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Score</span><span>55.05%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="55.05" style="background: linear-gradient(90deg, #c084fc, #bf00ff);"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ EXPERIENCE ══════════ -->
+  <section id="experience">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-tag">03</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="exp-grid">
+
+        <div class="exp-card reveal">
+          <div class="exp-icon exp-icon-1"><i class="fa fa-calculator"></i></div>
+          <div class="exp-role">Tally Operator</div>
+          <div class="exp-company"><i class="fa fa-building" style="margin-right:6px; font-size:0.75rem;"></i>Proprietor Firms</div>
+          <div class="exp-period" style="margin-bottom: 14px;">
+            <i class="fa fa-map-marker-alt"></i> Gangarampur &nbsp;|&nbsp;
+            <i class="fa fa-calendar"></i> 2024 – 2025
+            &nbsp;<span class="exp-badge">Current</span>
+          </div>
+          <ul class="abilities-list" style="margin-top: 14px;">
+            <li>Managed accounts and financial records using Tally software</li>
+            <li>Handled data entry, billing, and invoice processing accurately</li>
+            <li>Maintained daily transaction logs and reconciliation</li>
+            <li>Ensured compliance with accounting standards</li>
+          </ul>
+        </div>
+
+        <div class="exp-card reveal">
+          <div class="exp-icon exp-icon-2"><i class="fa fa-car"></i></div>
+          <div class="exp-role">Sales Executive — Spare & Parts</div>
+          <div class="exp-company" style="color: #c084fc;"><i class="fa fa-store" style="margin-right:6px; font-size:0.75rem;"></i>TVS Showroom</div>
+          <div class="exp-period" style="margin-bottom: 14px;">
+            <i class="fa fa-map-marker-alt"></i> Gangarampur &nbsp;|&nbsp;
+            <i class="fa fa-calendar"></i> 2023 – 2025
+            &nbsp;<span class="exp-badge">Current</span>
+          </div>
+          <ul class="abilities-list" style="margin-top: 14px;">
+            <li>Handled sales of spare parts and accessories at TVS showroom</li>
+            <li>Built and maintained strong customer relationships</li>
+            <li>Managed inventory records and stock documentation</li>
+            <li>Assisted clients with product selection and after-sale support</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ OTHER QUALIFICATION ══════════ -->
+  <section id="qualification">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-tag">04</span>
+        <h2 class="section-title">Other Qualification</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="qual-card reveal">
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; margin-bottom: 24px;">
+          <div style="flex: 1; min-width: 220px;">
+            <div style="font-family: 'Orbitron', monospace; font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
+              Advanced Diploma in Computer Application
+            </div>
+            <div style="font-size: 0.82rem; color: var(--neon-cyan); font-weight: 600; margin-bottom: 6px;">
+              <i class="fa fa-certificate" style="margin-right:6px;"></i>ADCA — 1 Year Program
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">
+              <i class="fa fa-landmark" style="margin-right:6px;"></i>National Board of Computer Education — Skill India
+            </div>
+          </div>
+          <div>
+            <div style="padding: 8px 18px; background: rgba(0,245,255,0.08); border: 1px solid rgba(0,245,255,0.25); border-radius: 8px; font-size: 0.75rem; color: var(--neon-cyan); font-weight: 700; letter-spacing: 1px;">
+              <i class="fa fa-award" style="margin-right:6px;"></i>CERTIFIED
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
+          Key Modules Covered
+        </div>
+
+        <div class="module-grid">
+          <div class="module-item"><i class="fa fa-microchip"></i> Fundamentals of Computer Software & Hardware</div>
+          <div class="module-item"><i class="fa fa-desktop"></i> Operating Systems: Windows, Notepad, WordPad</div>
+          <div class="module-item"><i class="fab fa-microsoft"></i> MS Office Suite 2010 — Word</div>
+          <div class="module-item"><i class="fa fa-table"></i> Microsoft Excel 2010</div>
+          <div class="module-item"><i class="fa fa-file-powerpoint"></i> Microsoft PowerPoint 2010</div>
+          <div class="module-item"><i class="fa fa-database"></i> Microsoft Access 2010</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SKILLS ══════════ -->
+  <section id="skills">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-tag">05</span>
+        <h2 class="section-title">Skills & Abilities</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="neo-card reveal" style="margin-bottom: 30px;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 18px;">
+          Core Competencies
+        </div>
+        <div class="skill-tag-wrap">
+          <span class="skill-tag tag-cyan">Tally ERP</span>
+          <span class="skill-tag tag-cyan">Data Entry</span>
+          <span class="skill-tag tag-cyan">Billing & Invoicing</span>
+          <span class="skill-tag tag-purple">MS Word</span>
+          <span class="skill-tag tag-purple">MS Excel</span>
+          <span class="skill-tag tag-purple">MS PowerPoint</span>
+          <span class="skill-tag tag-purple">MS Access</span>
+          <span class="skill-tag tag-green">Client Management</span>
+          <span class="skill-tag tag-green">Customer Relations</span>
+          <span class="skill-tag tag-gold">Sales & Marketing</span>
+          <span class="skill-tag tag-gold">Inventory Management</span>
+          <span class="skill-tag tag-pink">Communication</span>
+          <span class="skill-tag tag-pink">Record Keeping</span>
+          <span class="skill-tag tag-cyan">Documentation</span>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="neo-card reveal">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 18px;">
+            <i class="fa fa-user-tie" style="margin-right:6px;"></i> Soft Skills
+          </div>
+          <ul class="abilities-list">
+            <li>Excellent interpersonal & communication abilities for managing client interactions</li>
+            <li>Strong understanding of client needs with long-term relationship building</li>
+            <li>Confident in assisting clients with business policies & services</li>
+            <li>Well-organized, punctual, and team-oriented professional</li>
+            <li>Calm under pressure, focused on achieving targets</li>
+          </ul>
+        </div>
+
+        <div class="neo-card reveal">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c084fc; margin-bottom: 18px;">
+            <i class="fa fa-laptop-code" style="margin-right:6px;"></i> Technical Skills
+          </div>
+          <ul class="abilities-list">
+            <li>Skilled in maintaining accurate records & validating client information</li>
+            <li>Proficient in digital tools for customer management & documentation</li>
+            <li>Experience in resolving issues efficiently with accuracy</li>
+            <li>Data entry and spreadsheet management using MS Excel</li>
+            <li>Computer hardware & software fundamentals</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PERSONAL DETAILS ══════════ -->
+  <section id="personal">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-tag">06</span>
+        <h2 class="section-title">Personal Details</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="personal-grid reveal">
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="personal-label">Full Name</div>
+            <div class="personal-value">Gourab Talukder</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-male"></i></div>
+          <div>
+            <div class="personal-label">Father's Name</div>
+            <div class="personal-value">Chandi Talukder</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-female"></i></div>
+          <div>
+            <div class="personal-label">Mother's Name</div>
+            <div class="personal-value">Anjali Talukder</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-birthday-cake"></i></div>
+          <div>
+            <div class="personal-label">Date of Birth</div>
+            <div class="personal-value">05 May 2003</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-venus-mars"></i></div>
+          <div>
+            <div class="personal-label">Gender</div>
+            <div class="personal-value">Male</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-heart"></i></div>
+          <div>
+            <div class="personal-label">Marital Status</div>
+            <div class="personal-value">Single</div>
+          </div>
+        </div>
+
+        <div class="personal-item">
+          <div class="personal-icon"><i class="fa fa-flag"></i></div>
+          <div>
+            <div class="personal-label">Nationality</div>
+            <div class="personal-value">Indian</div>
+          </div>
+        </div>
+
+        <div class="personal-item" style="grid-column: span 1;">
+          <div class="personal-icon"><i class="fa fa-map-marked-alt"></i></div>
+          <div>
+            <div class="personal-label">Permanent Address</div>
+            <div class="personal-value" style="font-size: 0.8rem; line-height: 1.6;">
+              Vill – Kadihat, P.O - Belbari<br>
+              P.S – Gangarampur, PIN – 733124<br>
+              Dist – Dakshin Dinajpur, WB
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Languages -->
+      <div class="reveal" style="margin-top: 40px;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px;">
+          <i class="fa fa-language" style="color: var(--neon-cyan); margin-right: 8px;"></i>Languages Known
+        </div>
+        <div class="lang-wrap">
+          <div class="lang-item">
+            <span class="lang-flag">🇬🇧</span>
+            <div><div class="lang-name">English</div><div class="lang-level">Proficient</div></div>
+          </div>
+          <div class="lang-item">
+            <span class="lang-flag">🇧🇩</span>
+            <div><div class="lang-name">Bengali</div><div class="lang-level">Native</div></div>
+          </div>
+          <div class="lang-item">
+            <span class="lang-flag">🇮🇳</span>
+            <div><div class="lang-name">Hindi</div><div class="lang-level">Conversational</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DECLARATION ══════════ -->
+  <section>
+    <div class="section-wrap" style="padding-top: 0;">
+      <div class="section-header reveal">
+        <span class="section-tag">07</span>
+        <h2 class="section-title">Declaration</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="declaration-box reveal">
+        <p style="font-size: 1rem; line-height: 1.9; color: #9999cc; max-width: 680px; margin: 0 auto 28px;">
+          I hereby declare that the above given information is
+          <span style="color: var(--neon-cyan); font-weight: 600;">true and accurate</span>
+          to the best of my knowledge and ability.
+          I take full responsibility for the authenticity of the details provided herein.
+        </p>
+        <div style="width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); margin: 0 auto 20px;"></div>
+        <div style="font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
+          Gourab Talukder
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-secondary);">Dakshin Dinajpur, West Bengal, India</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div style="font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 800; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px;">
+    GOURAB TALUKDER
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 16px;">
+    Tally Operator · Sales Executive · Computer Professional
+  </div>
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+    <a href="tel:7074239449" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.8rem;"><i class="fa fa-phone" style="margin-right:6px;"></i>+91 7074239449</a>
+    <a href="mailto:gourabtalukder319@gmail.com" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.8rem;"><i class="fa fa-envelope" style="margin-right:6px;"></i>gourabtalukder319@gmail.com</a>
+  </div>
+  <div style="font-size: 0.72rem; color: #444466;">
+    © 2025 Gourab Talukder · Digital Resume · All Rights Reserved
+  </div>
+</footer>
+
+<script>
+  // ── Hamburger Toggle ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ── Scroll Reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Trigger progress bars
+        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Also observe progress bars globally when their parent becomes visible
+  document.querySelectorAll('.progress-fill').forEach(bar => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(bar);
+  });
+
+  // ── Active Nav Link Highlight ──
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--neon-cyan)' : '';
+    });
+  });
+
+  // ── Typing Effect for Hero Title ──
+  const titles = ['Tally Operator', 'Sales Executive', 'Computer Professional', 'B.Sc Physics Graduate'];
+  let ti = 0, ci = 0, deleting = false;
+  const el = document.querySelector('.hero-title span');
+  function type() {
+    const word = titles[ti];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; return setTimeout(type, 1800); }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; ti = (ti + 1) % titles.length; }
+    }
+    setTimeout(type, deleting ? 60 : 90);
+  }
+  type();
+
+  // ── Smooth Scroll for all anchors ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
